@@ -1,0 +1,30 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+public class ArbolNATest {
+    @Test
+    public void testAlturaRaizSola() {
+        Nodo raiz = new Nodo(1);
+        ArbolNA arbol = new ArbolNA(raiz);
+        assertEquals(1, arbol.calcularAltura());
+    }
+    @Test
+    public void testAlturaDosNiveles() {
+        Nodo raiz = new Nodo(1);
+        Nodo hijo = new Nodo(2);
+        raiz.agregarHijo(hijo);
+        ArbolNA arbol = new ArbolNA(raiz);
+        assertEquals(2, arbol.calcularAltura());
+    }
+    @Test
+    public void testAlturaVariosNiveles() {
+        Nodo raiz = new Nodo(1);
+        Nodo h1 = new Nodo(2);
+        Nodo h2 = new Nodo(3);
+        Nodo h3 = new Nodo(4);
+        h1.agregarHijo(h2);
+        h2.agregarHijo(h3);
+        raiz.agregarHijo(h1);
+        ArbolNA arbol = new ArbolNA(raiz);
+        assertEquals(4, arbol.calcularAltura());
+    }
+}
