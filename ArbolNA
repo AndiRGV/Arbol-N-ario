@@ -1,0 +1,26 @@
+public class ArbolNA {
+    private Nodo raiz;
+
+    public ArbolNA(Nodo raiz) {
+        this.raiz = raiz;
+    }
+
+    public int calcularAltura() {
+        return calcularAlturaRecursiva(raiz);
+    }
+
+    private int calcularAlturaRecursiva(Nodo nodo) {
+        if (nodo == null) return 0;
+        if (nodo.hijos.isEmpty()) return 1;
+
+        int maxAlturaHijos = 0;
+        for (Nodo hijo : nodo.hijos) {
+            int alturaHijo = calcularAlturaRecursiva(hijo);
+            if (alturaHijo > maxAlturaHijos) {
+                maxAlturaHijos = alturaHijo;
+            }
+        }
+
+        return 1 + maxAlturaHijos;
+    }
+}
